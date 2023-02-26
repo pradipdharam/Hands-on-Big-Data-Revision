@@ -1,0 +1,26 @@
+[cloudera@quickstart ~]$ echo “This is content of file1“ > file1.txt
+[cloudera@quickstart ~]$ echo “This is content of file2” > file2.txt
+[cloudera@quickstart ~]$ cat file1.txt 
+“This is content of file1“
+[cloudera@quickstart ~]$ cat file2.txt 
+“This is content of file2”
+[cloudera@quickstart ~]$ hdfs dfs -put file1.txt /user/cloudera
+[cloudera@quickstart ~]$ hdfs dfs -put file2.txt /user/cloudera
+[cloudera@quickstart ~]$ hdfs dfs -ls -t -r | tail -2
+-rw-r--r--   1 cloudera cloudera         32 2023-02-26 04:40 file1.txt
+-rw-r--r--   1 cloudera cloudera         32 2023-02-26 04:40 file2.txt
+[cloudera@quickstart ~]$ hdfs dfs -help getmerge
+-getmerge [-nl] <src> <localdst> :
+  Get all the files in the directories that match the source file pattern and
+  merge and sort them to only one file on local fs. <src> is kept.
+                                                        
+  -nl  Add a newline character at the end of each file. 
+[cloudera@quickstart ~]$ hdfs dfs -getmerge file*.txt /home/cloudera/filenew.txt
+[cloudera@quickstart ~]$ ls -ltr | tail -3
+-rw-rw-r-- 1 cloudera cloudera        32 Feb 26 04:38 file1.txt
+-rw-rw-r-- 1 cloudera cloudera        32 Feb 26 04:38 file2.txt
+-rw-r--r-- 1 cloudera cloudera        64 Feb 26 04:43 filenew.txt
+[cloudera@quickstart ~]$ cat filenew.txt 
+“This is content of file1“
+“This is content of file2”
+[cloudera@quickstart ~]$
