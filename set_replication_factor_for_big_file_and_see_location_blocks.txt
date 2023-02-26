@@ -1,0 +1,71 @@
+[cloudera@quickstart ~]$ hadoop fs -Ddfs.replication=5 -put /home/cloudera/Desktop/pp/16k_data_cnn_features.npy /user/cloudera/
+[cloudera@quickstart ~]$ hadoop fs -ls 
+Found 8 items
+-rw-r--r--   5 cloudera cloudera 1609846864 2023-02-26 02:08 16k_data_cnn_features.npy
+-rw-r--r--   1 cloudera cloudera          0 2023-02-25 23:23 a.txt
+-rw-r--r--   1 cloudera cloudera         12 2023-02-25 23:24 b.txt
+drwxr-xr-x   - cloudera cloudera          0 2023-02-26 00:43 data
+drwxr-xr-x   - cloudera cloudera          0 2023-02-26 01:31 data1
+drwxr-xr-x   - cloudera cloudera          0 2023-02-26 01:35 data2
+drwxr-xr-x   - cloudera cloudera          0 2023-02-26 00:09 folder1
+-rw-r--r--   1 cloudera cloudera       2604 2023-02-26 01:21 passwd
+[cloudera@quickstart ~]$ hadoop fs -ls -h
+Found 8 items
+-rw-r--r--   5 cloudera cloudera      1.5 G 2023-02-26 02:08 16k_data_cnn_features.npy
+-rw-r--r--   1 cloudera cloudera          0 2023-02-25 23:23 a.txt
+-rw-r--r--   1 cloudera cloudera         12 2023-02-25 23:24 b.txt
+drwxr-xr-x   - cloudera cloudera          0 2023-02-26 00:43 data
+drwxr-xr-x   - cloudera cloudera          0 2023-02-26 01:31 data1
+drwxr-xr-x   - cloudera cloudera          0 2023-02-26 01:35 data2
+drwxr-xr-x   - cloudera cloudera          0 2023-02-26 00:09 folder1
+-rw-r--r--   1 cloudera cloudera      2.5 K 2023-02-26 01:21 passwd
+[cloudera@quickstart ~]$ hdfs fsck /user/cloudera/16k_data_cnn_features.npy -files -blocks -locations
+Connecting to namenode via http://quickstart.cloudera:50070/fsck?ugi=cloudera&files=1&blocks=1&locations=1&path=%2Fuser%2Fcloudera%2F16k_data_cnn_features.npy
+FSCK started by cloudera (auth:SIMPLE) from /10.0.2.15 for path /user/cloudera/16k_data_cnn_features.npy at Sun Feb 26 02:10:25 PST 2023
+/user/cloudera/16k_data_cnn_features.npy 1609846864 bytes, 12 block(s):  Under replicated BP-1067413441-127.0.0.1-1508775264580:blk_1073742839_2034. Target Replicas is 5 but found 1 live replica(s), 0 decommissioned replica(s), 0 decommissioning replica(s).
+ Under replicated BP-1067413441-127.0.0.1-1508775264580:blk_1073742840_2035. Target Replicas is 5 but found 1 live replica(s), 0 decommissioned replica(s), 0 decommissioning replica(s).
+ Under replicated BP-1067413441-127.0.0.1-1508775264580:blk_1073742841_2036. Target Replicas is 5 but found 1 live replica(s), 0 decommissioned replica(s), 0 decommissioning replica(s).
+ Under replicated BP-1067413441-127.0.0.1-1508775264580:blk_1073742842_2037. Target Replicas is 5 but found 1 live replica(s), 0 decommissioned replica(s), 0 decommissioning replica(s).
+ Under replicated BP-1067413441-127.0.0.1-1508775264580:blk_1073742843_2038. Target Replicas is 5 but found 1 live replica(s), 0 decommissioned replica(s), 0 decommissioning replica(s).
+ Under replicated BP-1067413441-127.0.0.1-1508775264580:blk_1073742844_2039. Target Replicas is 5 but found 1 live replica(s), 0 decommissioned replica(s), 0 decommissioning replica(s).
+ Under replicated BP-1067413441-127.0.0.1-1508775264580:blk_1073742845_2040. Target Replicas is 5 but found 1 live replica(s), 0 decommissioned replica(s), 0 decommissioning replica(s).
+ Under replicated BP-1067413441-127.0.0.1-1508775264580:blk_1073742846_2041. Target Replicas is 5 but found 1 live replica(s), 0 decommissioned replica(s), 0 decommissioning replica(s).
+ Under replicated BP-1067413441-127.0.0.1-1508775264580:blk_1073742847_2042. Target Replicas is 5 but found 1 live replica(s), 0 decommissioned replica(s), 0 decommissioning replica(s).
+ Under replicated BP-1067413441-127.0.0.1-1508775264580:blk_1073742848_2043. Target Replicas is 5 but found 1 live replica(s), 0 decommissioned replica(s), 0 decommissioning replica(s).
+ Under replicated BP-1067413441-127.0.0.1-1508775264580:blk_1073742849_2044. Target Replicas is 5 but found 1 live replica(s), 0 decommissioned replica(s), 0 decommissioning replica(s).
+ Under replicated BP-1067413441-127.0.0.1-1508775264580:blk_1073742850_2045. Target Replicas is 5 but found 1 live replica(s), 0 decommissioned replica(s), 0 decommissioning replica(s).
+0. BP-1067413441-127.0.0.1-1508775264580:blk_1073742839_2034 len=134217728 Live_repl=1 [DatanodeInfoWithStorage[10.0.2.15:50010,DS-621c9e78-caa3-4a7b-bf10-3c8a1245cb51,DISK]]
+1. BP-1067413441-127.0.0.1-1508775264580:blk_1073742840_2035 len=134217728 Live_repl=1 [DatanodeInfoWithStorage[10.0.2.15:50010,DS-621c9e78-caa3-4a7b-bf10-3c8a1245cb51,DISK]]
+2. BP-1067413441-127.0.0.1-1508775264580:blk_1073742841_2036 len=134217728 Live_repl=1 [DatanodeInfoWithStorage[10.0.2.15:50010,DS-621c9e78-caa3-4a7b-bf10-3c8a1245cb51,DISK]]
+3. BP-1067413441-127.0.0.1-1508775264580:blk_1073742842_2037 len=134217728 Live_repl=1 [DatanodeInfoWithStorage[10.0.2.15:50010,DS-621c9e78-caa3-4a7b-bf10-3c8a1245cb51,DISK]]
+4. BP-1067413441-127.0.0.1-1508775264580:blk_1073742843_2038 len=134217728 Live_repl=1 [DatanodeInfoWithStorage[10.0.2.15:50010,DS-621c9e78-caa3-4a7b-bf10-3c8a1245cb51,DISK]]
+5. BP-1067413441-127.0.0.1-1508775264580:blk_1073742844_2039 len=134217728 Live_repl=1 [DatanodeInfoWithStorage[10.0.2.15:50010,DS-621c9e78-caa3-4a7b-bf10-3c8a1245cb51,DISK]]
+6. BP-1067413441-127.0.0.1-1508775264580:blk_1073742845_2040 len=134217728 Live_repl=1 [DatanodeInfoWithStorage[10.0.2.15:50010,DS-621c9e78-caa3-4a7b-bf10-3c8a1245cb51,DISK]]
+7. BP-1067413441-127.0.0.1-1508775264580:blk_1073742846_2041 len=134217728 Live_repl=1 [DatanodeInfoWithStorage[10.0.2.15:50010,DS-621c9e78-caa3-4a7b-bf10-3c8a1245cb51,DISK]]
+8. BP-1067413441-127.0.0.1-1508775264580:blk_1073742847_2042 len=134217728 Live_repl=1 [DatanodeInfoWithStorage[10.0.2.15:50010,DS-621c9e78-caa3-4a7b-bf10-3c8a1245cb51,DISK]]
+9. BP-1067413441-127.0.0.1-1508775264580:blk_1073742848_2043 len=134217728 Live_repl=1 [DatanodeInfoWithStorage[10.0.2.15:50010,DS-621c9e78-caa3-4a7b-bf10-3c8a1245cb51,DISK]]
+10. BP-1067413441-127.0.0.1-1508775264580:blk_1073742849_2044 len=134217728 Live_repl=1 [DatanodeInfoWithStorage[10.0.2.15:50010,DS-621c9e78-caa3-4a7b-bf10-3c8a1245cb51,DISK]]
+11. BP-1067413441-127.0.0.1-1508775264580:blk_1073742850_2045 len=133451856 Live_repl=1 [DatanodeInfoWithStorage[10.0.2.15:50010,DS-621c9e78-caa3-4a7b-bf10-3c8a1245cb51,DISK]]
+
+Status: HEALTHY
+ Total size:	1609846864 B
+ Total dirs:	0
+ Total files:	1
+ Total symlinks:		0
+ Total blocks (validated):	12 (avg. block size 134153905 B)
+ Minimally replicated blocks:	12 (100.0 %)
+ Over-replicated blocks:	0 (0.0 %)
+ Under-replicated blocks:	12 (100.0 %)
+ Mis-replicated blocks:		0 (0.0 %)
+ Default replication factor:	1
+ Average block replication:	1.0
+ Corrupt blocks:		0
+ Missing replicas:		48 (80.0 %)
+ Number of data-nodes:		1
+ Number of racks:		1
+FSCK ended at Sun Feb 26 02:10:25 PST 2023 in 1 milliseconds
+
+
+The filesystem under path '/user/cloudera/16k_data_cnn_features.npy' is HEALTHY
+[cloudera@quickstart ~]$ hadoop fs -Ddfs.replication=5 -put /home/cloudera/Desktop/pp/16k_data_cnn_features.npy /user/cloudera/
+
