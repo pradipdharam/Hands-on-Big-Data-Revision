@@ -8,8 +8,9 @@ spark = SparkSession.builder \
       .getOrCreate()
 
 # Read CSV file into table
-df = spark.read.option("header",True) \
-          .csv("data/emp.csv")
+df = (spark.read
+      .option("header",True)
+      .csv("data/emp.csv"))
 
 df.createOrReplaceTempView("emp")
 df1 = spark.sql("select EMPLOYEE_ID as eid, format_number(float(max(SALARY)),2) as max_salary, format_number(avg(SALARY),2) as avg_salary from emp group by EMPLOYEE_ID")

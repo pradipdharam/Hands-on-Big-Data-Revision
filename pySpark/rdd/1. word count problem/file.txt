@@ -1,0 +1,11 @@
+Sqoop is for data ingestion. Hive is for SQL or structured data, Pig is for data cleaning, Mahout is for machine learning, Storm is for streaming data.
+
+There are separate tools to perform each kind of activity, and each of the tools has different syntax to perform.
+
+Also, Map Reduce style needs to be imposed to perform operations using these tools; even though Map Reduce key-value pair programming is required or not.
+
+However, Spark is a general purpose engine where developers get the functionality to perform all the general purpose operations such as data ingestion, cleaning, querying, streaming, machine learning using Spark only.
+
+Developer needs to learn only one style of writing the code. Developer does not have to learn many tools separately such as Sqoop, Hive, Storm; developers just need to learn one style of programming. Spark is appropriate for a wide range of general purpose activities.
+
+Developer is not bound to only map and reduce style. Developers can do many other things or operations such as filter, map, reduce etc.
